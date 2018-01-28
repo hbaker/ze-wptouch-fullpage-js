@@ -74,6 +74,7 @@ class Ze_wptouch_fullpage_js_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/ze_wptouch_fullpage_js-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/jquery.fullPage.css', array(), $this->version, 'all' );
 
 	}
 
@@ -97,6 +98,7 @@ class Ze_wptouch_fullpage_js_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ze_wptouch_fullpage_js-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jquery.fullPage.js', array( 'jquery' ), $this->version, false );
 
 	}
 
