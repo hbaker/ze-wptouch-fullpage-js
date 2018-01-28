@@ -78,5 +78,38 @@ function run_ze_wptouch_fullpage_js() {
 	$plugin = new Ze_wptouch_fullpage_js();
 	$plugin->run();
 
+  // ADD SCRIPTS TO THE HEADER
+  add_action( 'wp_head', 'ze_header_scripts' );
+  function ze_header_scripts(){
+    ?>
+
+    <?php if (function_exists('wptouch_is_mobile_theme_showing')  && wptouch_is_mobile_theme_showing() ) { ?>
+    <!-- DO STUFF FOR WP TOUCH PAGES -->
+    <?php
+    add_action( 'wp_enqueue_scripts', 'load_fullpage_js' );
+    function load_fullpage_js(){
+      wp_enqueue_script( 'fullpage_js', get_stylesheet_directory_uri() . '/custom-scripts', array( 'jquery' ) );
+    }
+    ?>
+    <!-- END DO STUFF FOR WP TOUCH PAGES-->
+
+    <?php
+    }
+  }
+
+  // ADD SCRIPTS TO THE FOOTER
+  add_action( 'wp_footer', 'ze_footer_scripts' );
+  function ze_footer_scripts(){
+    ?>
+    
+    <?php if (function_exists('wptouch_is_mobile_theme_showing')  && wptouch_is_mobile_theme_showing() ) { ?>
+    <!-- DO STUFF FOR WP TOUCH PAGES -->
+    <script></script>
+    <!-- END DO STUFF FOR WP TOUCH PAGES-->
+    
+    <?php
+    }
+  }
+
 }
 run_ze_wptouch_fullpage_js();
